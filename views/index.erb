@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Sinatra Mysql app</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+	<img src="<%= url('/images/sinatra.svg') %>" />
+	<h3>Welcome to Sinatra!</h3>
+	<form action="/submit" method="POST">
+		<input type="text" name="app[name]" value="" required placeholder="Enter App Name" autocomplete="off" />
+		<input type="submit" value="Submit" />
+	</form>
+	<img src="<%= url('/images/mysql.svg') %>" />
+	<h3>All Apps</h3>
+	<ul>
+	<% @apps.each do |app| %>
+		<li>
+			<%= app.name %>
+		</li>
+	<% end %>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,20 @@
+---
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+
+# Configure the database used when in the test environment
+test:
+  <<: *default
+
+# Configure the database used when in the development environment
+development:
+  <<: *default
