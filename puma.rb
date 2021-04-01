@@ -8,7 +8,7 @@
 # and maximum, this matches the default thread size of Active Record.
 #
 threads_count = ENV.fetch('PUMA_THREADS') { 5 }.to_i
-threads threads_count, threads_count
+threads 1, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
@@ -20,4 +20,9 @@ port ENV.fetch('APP_PORT') { 3000 }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch('WORKERS') { 2 }.to_i
+workers ENV.fetch('WORKERS') { 1 }.to_i
+
+pidfile "tmp/puma.pid"
+state_path "tmp/puma.state"
+
+stdout_redirect "log/puma.stdout.log", "log/puma.stderr.log", true
